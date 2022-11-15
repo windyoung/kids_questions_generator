@@ -34,3 +34,5 @@ if __name__ == '__main__':
     formula_generator = MathematicalFormulaGenerator()
     a = formula_generator.math_plus(10)
     print(a)
+
+
