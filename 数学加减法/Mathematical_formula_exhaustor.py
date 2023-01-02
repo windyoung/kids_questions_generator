@@ -6,13 +6,13 @@ class Mathematical_formula_exhaustor():
     def __init__(self) -> None:
         pass
 
-    def plus_under_10(self, start_number):
+    def plus_under_10(self):
         "10以内的两位数加法"
         res = {"name": "plus_under_10",
                "datalist": []}
         number_limit = 10
-        for n1 in range(start_number, number_limit + 1):
-            for n2 in range(start_number, number_limit + 1 - n1):
+        for n1 in range(0, number_limit + 1):
+            for n2 in range(0, number_limit + 1 - n1):
                 if n1 == 0 or n2 == 0:
                     is_0 = 'Y'
                 else:
@@ -27,5 +27,5 @@ class Mathematical_formula_exhaustor():
 if __name__ == '__main__':
     pass
     gen = Mathematical_formula_exhaustor()
-    a = gen.plus_under_10(0)
+    a = gen.plus_under_10()
     print(a)

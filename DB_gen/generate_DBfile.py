@@ -2,7 +2,7 @@
 #!/usr/bin/env python3
 import os
 import sqlite3
-import sys 
+import sys
 # sys.path.append('..\\数学加减法')
 sys.path.append('.\\')
 from 数学加减法.Mathematical_formula_exhaustor import *
@@ -19,7 +19,7 @@ class DB_file_generator():
             self.db = sqlite3.connect(datafile)
             print(datafile, " connected")
         else:
-            path_=os.path.split(datafile)[0]
+            path_ = os.path.split(datafile)[0]
             if os.path.exists(path_):
                 pass
             else:
@@ -57,10 +57,25 @@ class DB_file_generator():
         if res_t["res"] == True:
             print('Table exists!')
         else:
-            tab_column = tbl_data[0]
-            print(tab_column)
-
-        pass
+            # 获取 表的及列表的列大小
+            keys_ = {}
+            for one_record in tbl_data:
+                for key in one_record:
+                    if key not in keys_:
+                        keys_[key] = 0
+                    len_ = len(str(one_record[key]))
+                    if len_ > keys_[key]:
+                        keys_[key] = len_
+            print(keys_)
+            # 组件 建表语句
+            for key in keys_:
+                sql_column ="{} char({}) not null,".format(keys_)
+            sql_creat_table = """ create table {0}
+            (id int primary key not null,
+            {1} 
+            comment char(30) );
+            """.format(tbl_name,sql_column)
+            print(sql_creat_table)
 
 
 if __name__ == '__main__':
@@ -72,6 +87,5 @@ if __name__ == '__main__':
     # 创建数据文件
     datafile = r"./data/db/test_1.db"
     b = DB_file_generator()
-    b_db_conn=b.create_local_db(datafile)
-    b.create_db_table(b_db_conn,res_tbl)
-
+    b_db_conn = b.create_local_db(datafile)
+    b.create_db_table(b_db_conn, res_tbl)
