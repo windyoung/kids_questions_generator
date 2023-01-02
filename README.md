@@ -16,8 +16,11 @@
 
 |plus_under_100 | 100以内的加法 |  
 |minus_under_100 | 100以内的减法 | 
+|mixplusminus_under_100 | 100以内的混合加减 |  
+
 
 |Multiplication_table| 乘法口诀表 |
 
 
+Mathematical_formula_exhaustor
 
